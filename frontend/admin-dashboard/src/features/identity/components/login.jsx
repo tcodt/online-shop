@@ -2,23 +2,40 @@ import logo from "@assets/images/tcod-logo-white.jpg";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { logFunc } from "../../user-info/userInfoSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
-    setError: { errors },
+    formState: { errors },
   } = useForm();
 
   const submitFormHandler = (data) => {
     const infos = {
-      phone: data.phone,
-      password: data.password,
+      phone: data.phoneFeild,
+      password: data.passwordFeild,
     };
 
     axios
       .post("http://localhost:5000/api-v1/user/login", infos)
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        console.log(data.data);
+        console.log(data.data.data.body);
+        console.log(data.data.data.token);
+
+        const getToken = data.data.data.token;
+
+        if (getToken) {
+          console.log("You are logged in");
+        } else {
+          console.log("Please register first");
+        }
+      })
       .catch((err) => console.log(err.response.data.message));
   };
 
@@ -49,24 +66,43 @@ const Login = () => {
           <label className="text-start text-sm text-gray-600">موبایل</label>
           <input
             type="text"
-            {...register("phone", {
+            {...register("phoneFeild", {
               required: "شماره موبایل الزامی است",
               minLength: 11,
               maxLength: 11,
             })}
-            className="p-1 bg-slate-200 outline-none rounded-lg border-2 border-slate-300 focus:border-sky-500"
+            className={`p-1 bg-slate-200 outline-none rounded-lg border-2 ${
+              errors.phoneFeild
+                ? "border-red-500"
+                : "border-slate-300 focus-within:border-sky-500"
+            }`}
           />
+          {errors?.phoneFeild && errors?.phoneFeild?.type === "required" && (
+            <p className="text-xs text-red-500 font-bold">
+              {errors.phoneFeild.message}
+            </p>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
           <label className="text-start text-sm text-gray-600">رمز عبور</label>
           <input
             type="password"
-            {...register("password", {
+            {...register("passwordFeild", {
               required: "رمز عبور الزامی است",
             })}
-            className="p-1 bg-slate-200 outline-none rounded-lg border-2 border-slate-300 focus:border-sky-500"
+            className={`p-1 bg-slate-200 outline-none rounded-lg border-2 ${
+              errors.passwordFeild
+                ? "border-red-500"
+                : "border-slate-300 focus-within:border-sky-500"
+            }`}
           />
+          {errors?.passwordFeild &&
+            errors?.passwordFeild?.type === "required" && (
+              <p className="text-xs text-red-500 font-bold">
+                {errors.passwordFeild.message}
+              </p>
+            )}
         </div>
         <button className="p-2 bg-sky-500 rounded-lg text-white hover:bg-sky-600 transition">
           وارد شوید
