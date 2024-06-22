@@ -1,24 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "./features/identity/components/login";
-import Register from "./features/identity/components/register";
 import NotFoundPage from "./pages/error-page/not-found-page";
 import IdentityLayout from "./layouts/identity-layout";
+import AdminDashboard from "./layouts/admin-dashboard";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <IdentityLayout />,
-    children: [
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-    ],
-    errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/admin",
+    element: <AdminDashboard />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
 

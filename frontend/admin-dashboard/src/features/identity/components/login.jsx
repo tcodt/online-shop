@@ -1,12 +1,14 @@
 import logo from "@assets/images/tcod-logo-white.jpg";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logFunc } from "../../user-info/userInfoSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -29,9 +31,10 @@ const Login = () => {
         console.log(data.data.data.token);
 
         const getToken = data.data.data.token;
+        const getBody = data.data.data.body;
 
         if (getToken) {
-          console.log("You are logged in");
+          navigate("/admin");
         } else {
           console.log("Please register first");
         }
@@ -51,12 +54,12 @@ const Login = () => {
         <p className="text-base text-gray-600">
           جهت ورود لازم است از طریق موبایل و رمز عبور خود اقدام کنید
         </p>
-        <p className="text-sm text-gray-600">
+        {/* <p className="text-sm text-gray-600">
           قبلا ثبت نام نکرده اید؟{" "}
           <Link to="/register" className="text-sky-500">
             ثبت نام کنید
           </Link>
-        </p>
+        </p> */}
       </div>
       <form
         onSubmit={handleSubmit(submitFormHandler)}

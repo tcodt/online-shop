@@ -1,6 +1,6 @@
 import logo from "@assets/images/tcod-logo-white.jpg";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Register = () => {
   const {
@@ -26,12 +26,12 @@ const Register = () => {
         <p className="text-base text-gray-600">
           جهت استفاده از ویژگی های داشبورد لطفا ثبت نام کنید
         </p>
-        <p className="text-sm text-gray-600">
+        {/* <p className="text-sm text-gray-600">
           قبلا ثبت نام کرده اید؟{" "}
           <Link to="/login" className="text-sky-500">
             وارد شوید
           </Link>
-        </p>
+        </p> */}
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
