@@ -1,7 +1,27 @@
 import logo from "@assets/images/tcod-logo-white.jpg";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    setError: { errors },
+  } = useForm();
+
+  const submitFormHandler = (data) => {
+    const infos = {
+      phone: data.phone,
+      password: data.password,
+    };
+
+    axios
+      .post("http://localhost:5000/api-v1/user/login", infos)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err.response.data.message));
+  };
+
   return (
     <>
       <div className="flex flex-col items-center gap-2">
@@ -21,18 +41,30 @@ const Login = () => {
           </Link>
         </p>
       </div>
-      <form className="bg-white p-4 rounded-lg shadow-md flex flex-col gap-4 lg:w-[30%] md:w-2/4 sm:w-[70%] w-4/5">
+      <form
+        onSubmit={handleSubmit(submitFormHandler)}
+        className="bg-white p-4 rounded-lg shadow-md flex flex-col gap-4 lg:w-[30%] md:w-2/4 sm:w-[70%] w-4/5"
+      >
         <div className="flex flex-col gap-1">
           <label className="text-start text-sm text-gray-600">موبایل</label>
           <input
             type="text"
+            {...register("phone", {
+              required: "شماره موبایل الزامی است",
+              minLength: 11,
+              maxLength: 11,
+            })}
             className="p-1 bg-slate-200 outline-none rounded-lg border-2 border-slate-300 focus:border-sky-500"
           />
         </div>
+
         <div className="flex flex-col gap-1">
           <label className="text-start text-sm text-gray-600">رمز عبور</label>
           <input
-            type="text"
+            type="password"
+            {...register("password", {
+              required: "رمز عبور الزامی است",
+            })}
             className="p-1 bg-slate-200 outline-none rounded-lg border-2 border-slate-300 focus:border-sky-500"
           />
         </div>

@@ -1,11 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const IdentityLayout = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/login");
+  }, [navigate]);
+
   return (
     <>
-      <div className="w-[200px] bg-sky-500">
-        <div>sidebar</div>
-      </div>
       <div className="flex flex-col justify-center items-center h-screen gap-4">
         <Outlet />
       </div>

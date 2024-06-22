@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import IdentityLayout from "./layouts/identity-layout";
 import Login from "./features/identity/components/login";
 import Register from "./features/identity/components/register";
 import NotFoundPage from "./pages/error-page/not-found-page";
+import IdentityLayout from "./layouts/identity-layout";
 
 const router = createBrowserRouter([
   {
@@ -10,11 +10,11 @@ const router = createBrowserRouter([
     element: <IdentityLayout />,
     children: [
       {
-        path: "login",
+        path: "/login",
         element: <Login />,
       },
       {
-        path: "register",
+        path: "/register",
         element: <Register />,
       },
     ],
