@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 // import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { getUserInfo } from "../../user-info/userInfoSlice";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../auth-slice/auth-slice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const Login = () => {
         const userData = data.data.data;
 
         if (userToken) {
-          dispatch(getUserInfo(userData));
+          dispatch(loginUser(userData));
           navigate("/admin");
         }
       })
