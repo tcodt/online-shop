@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 // import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { logFunc } from "../../user-info/userInfoSlice";
+import { getUserInfo } from "../../user-info/userInfoSlice";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -30,16 +30,15 @@ const Login = () => {
         console.log(data.data.data.body);
         console.log(data.data.data.token);
 
-        const getToken = data.data.data.token;
-        const getBody = data.data.data.body;
+        const userToken = data.data.data.token;
+        const userData = data.data.data;
 
-        if (getToken) {
+        if (userToken) {
+          dispatch(getUserInfo(userData));
           navigate("/admin");
-        } else {
-          console.log("Please register first");
         }
       })
-      .catch((err) => console.log(err.response.data.message));
+      .catch((err) => alert(err.response.data.message));
   };
 
   return (
@@ -52,7 +51,7 @@ const Login = () => {
         />
         <h4 className="text-lg text-gray-700">THE CODE OF DUTY</h4>
         <p className="text-base text-gray-600">
-          جهت ورود لازم است از طریق موبایل و رمز عبور خود اقدام کنید
+          جهت ورود از طریق موبایل و رمز عبور خود اقدام کنید
         </p>
         {/* <p className="text-sm text-gray-600">
           قبلا ثبت نام نکرده اید؟{" "}

@@ -3,18 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const userInfoSlice = createSlice({
   name: "userInfo",
   initialState: {
-    userInfos: {
-      phone: "",
-      password: "",
-    },
+    name: "",
   },
   reducers: {
-    logFunc: (state, actions) => {
-      console.log("Log state: ", state);
-      console.log("Log action: ", actions.payload);
+    getUserInfo: (state, actions) => {
+      state.name = actions?.payload?.body?.name;
     },
+    isUserLoggin: () => {},
   },
 });
 
-export const { logFunc } = userInfoSlice.actions;
+export const { getUserInfo } = userInfoSlice.actions;
 export default userInfoSlice.reducer;
