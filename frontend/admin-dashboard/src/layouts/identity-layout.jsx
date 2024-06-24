@@ -13,10 +13,10 @@ const IdentityLayout = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center h-screen gap-4">
-        <div className="absolute top-4 right-8 bg-white p-2 rounded-lg shadow-md flex items-center gap-4 w-2/4 md:w-1/5">
+        <div className="absolute top-2 right-2 p-2 rounded-lg flex items-center gap-4 w-[70%] md:w-[30%]">
           <button
             onClick={() => setIsLogginMode(true)}
-            className="bg-sky-500 hover:bg-sky-600 transition p-1 rounded-lg text-white flex-1 flex items-center justify-center gap-2"
+            className="text-gray-600  hover:text-sky-500 flex items-center justify-center gap-2 border-e-2 border-slate-300 pe-4"
           >
             {/* {isLogginMode ? "ثبت نام" : "ورود"} */}
             <PiUserDuotone className="text-xl" />
@@ -24,7 +24,7 @@ const IdentityLayout = () => {
           </button>
           <button
             onClick={() => setIsLogginMode(false)}
-            className="bg-sky-500 hover:bg-sky-600 transition p-1 rounded-lg text-white flex-1 flex items-center justify-center gap-2"
+            className="text-gray-600 hover:text-sky-500 flex items-center justify-center gap-2"
           >
             <PiUserPlusDuotone className="text-xl" />
             ثبت نام

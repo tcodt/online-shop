@@ -67,9 +67,13 @@ const Login = () => {
         <div className="flex flex-col gap-1">
           <label className="text-start text-sm text-gray-600">موبایل</label>
           <input
-            type="text"
+            type="tel"
             {...register("phoneFeild", {
-              required: "شماره موبایل الزامی است",
+              required: true,
+              pattern: {
+                value: /^09\d{9}$/,
+                message: "شماره موبایل معتبر نیست",
+              },
               minLength: 11,
               maxLength: 11,
             })}
@@ -80,6 +84,11 @@ const Login = () => {
             }`}
           />
           {errors?.phoneFeild && errors?.phoneFeild?.type === "required" && (
+            <p className="text-xs text-red-500 font-bold">
+              شماره موبایل الزامی است
+            </p>
+          )}
+          {errors.phoneFeild && (
             <p className="text-xs text-red-500 font-bold">
               {errors.phoneFeild.message}
             </p>

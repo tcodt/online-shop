@@ -73,9 +73,13 @@ const Register = () => {
           <input
             type="text"
             {...register("number", {
-              required: "شماره موبایل الزامی است",
+              required: true,
               minLength: 11,
               maxLength: 11,
+              pattern: {
+                value: /^09\d{9}$/,
+                message: "شماره موبایل معتبر نیست",
+              },
             })}
             className={`p-1 bg-slate-200 outline-none rounded-lg border-2 ${
               errors.number
@@ -83,9 +87,14 @@ const Register = () => {
                 : "border-slate-300 focus-within:border-sky-500"
             }`}
           />
-          {errors.number && errors.number.type === "required" && (
+          {errors?.number && errors?.number?.type === "required" && (
             <p className="text-xs text-red-500 font-bold">
-              {errors.number?.message}
+              شماره موبایل الزامی است
+            </p>
+          )}
+          {errors.number && (
+            <p className="text-xs text-red-500 font-bold">
+              {errors.number.message}
             </p>
           )}
           {(errors.number && errors.number.type === "minLength") ||
