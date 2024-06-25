@@ -1,0 +1,8 @@
+.hover-handler {
+  transition: 0.3s linear;
+}
+
+.hover-handler:hover {
+  transition: 0.3s linear;
+  transform: translateY(4px);
+}

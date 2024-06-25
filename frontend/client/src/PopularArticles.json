@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "هنر برنامه نویسی",
+    "author": "محمد رضا",
+    "published_date": "2024-03-15",
+    "views": 1500,
+    "cover": "/images/js-article.webp"
+  },
+  {
+    "id": 2,
+    "title": "قدرت یادگیری ماشین",
+    "author": "سارا احمدی",
+    "published_date": "2024-03-20",
+    "views": 1800,
+    "cover": "/images/js-course-article-2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "کاوش در جهان",
+    "author": "علی محمدی",
+    "published_date": "2024-03-25",
+    "views": 2000,
+    "cover": "/images/js-course-article.png"
+  }
+]
