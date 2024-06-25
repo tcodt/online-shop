@@ -1,62 +1,35 @@
-import { RouterProvider } from "react-router-dom";
-import routes from "./routes";
-import "./App.css";
-import SharedDataContext from "./Contexts/SharedDataProvider";
-import { useCallback, useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [token, setToken] = useState(null);
-  const [userInfos, setUserInfos] = useState({});
-
-  const login = useCallback((userInfos, token) => {
-    setToken(token);
-    setIsLoggedIn(true);
-    setUserInfos(userInfos);
-    localStorage.setItem("user", JSON.stringify({ token }));
-  }, []);
-
-  const logout = useCallback(() => {
-    setToken(null);
-    setUserInfos({});
-    localStorage.removeItem("user");
-  }, []);
-
-  useEffect(() => {
-    const localStorageData = JSON.parse(localStorage.getItem("user"));
-
-    if (localStorageData && localStorageData.token) {
-      axios
-        .get(`http://localhost:5000/api-v1/user/profile`, {
-          headers: {
-            Authorization: `Bearer ${localStorageData.token}`,
-          },
-        })
-        .then((res) => {
-          setIsLoggedIn(true);
-          setUserInfos(res.data.data);
-          setToken(localStorageData.token);
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        });
-    }
-  }, []);
+  const [count, setCount] = useState(0)
 
   return (
-    <SharedDataContext.Provider
-      value={{
-        isLoggedIn,
-        token,
-        userInfos,
-        login,
-        logout,
-      }}
-    >
-      <RouterProvider router={routes} />
-    </SharedDataContext.Provider>
-  );
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App
