@@ -2,13 +2,15 @@ import logo from "@assets/images/tcod-logo-white.jpg";
 import { useForm } from "react-hook-form";
 // import { Link } from "react-router-dom";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../auth-slice/auth-slice";
+import { loginUser } from "../../user-slice/user-slice";
+import { useEffect } from "react";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const selectUser = useSelector((state) => state.user);
 
   const {
     register,
@@ -24,19 +26,13 @@ const Login = () => {
 
     axios
       .post("http://localhost:5000/api-v1/user/login", infos)
-      .then((data) => {
-        console.log(data);
-        console.log(data.data);
-        console.log(data.data.data.body);
-        console.log(data.data.data.token);
+      .then(({ data }) => {
+        // console.log(res);
+        // console.log(res.data);
+        // console.log(res.data.data.body);
 
-        const userToken = data.data.data.token;
-        const userData = data.data.data;
-
-        if (userToken) {
-          dispatch(loginUser(userData));
-          navigate("/admin");
-        }
+        dispatch(loginUser(data.data.body));
+        navigate("/admin");
       })
       .catch((err) => alert(err.response.data.message));
   };
