@@ -1,24 +1,21 @@
-/* section#sectionID {
-  background: url("/images/map-dots.png");
-} */
-
-span.Typewriter__wrapper {
-  font-size: 1.5rem !important;
-  line-height: 2.25rem;
+#custom-image {
+  animation: rotate_image 10s 2s infinite ease-in;
 }
 
-.custom-animation {
-  animation: animate 10s forwards infinite;
-}
-
-@keyframes animate {
+@keyframes rotate_image {
   0% {
-    transform: translateX(100%);
+    transform: rotate(180deg);
+  }
+  25% {
+    transform: scale(1);
   }
   50% {
-    transform: translateX(0%);
+    transform: scale(2);
+  }
+  75% {
+    transform: scale(0.5);
   }
   100% {
-    transform: translateX(-100%);
+    transform: rotate(-180deg);
   }
 }

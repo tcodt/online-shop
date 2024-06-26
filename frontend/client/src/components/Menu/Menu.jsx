@@ -5,7 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 
 export default function Menu() {
   return (
-    <div className="bg-white rounded-b-3xl p-4 shadow-sm grid grid-cols-12 items-center gap-8">
+    <div className="bg-white rounded-b-3xl p-4 shadow-md grid grid-cols-12 items-center gap-8">
       <div className="col-span-1 flex items-center justify-center gap-4">
         <img
           src="/images/tcod-logo-white.jpg"
@@ -16,22 +16,22 @@ export default function Menu() {
       <div className="col-span-3">
         <ul className="flex items-center gap-4">
           <li>
-            <Link to="/" className="text-primary-dark">
+            <Link to="/" className="text-primary-dark font-semibold">
               صفحه اصلی
             </Link>
           </li>
           <li>
-            <Link to="/" className="text-primary-dark">
+            <Link to="/" className="text-primary-dark font-semibold">
               محصولات
             </Link>
           </li>
           <li>
-            <Link to="/" className="text-primary-dark">
+            <Link to="/" className="text-primary-dark font-semibold">
               ارتباط با ما
             </Link>
           </li>
           <li>
-            <Link to="/" className="text-primary-dark">
+            <Link to="/" className="text-primary-dark font-semibold">
               درباره ما
             </Link>
           </li>
