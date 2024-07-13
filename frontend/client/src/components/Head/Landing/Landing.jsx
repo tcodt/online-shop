@@ -1,10 +1,14 @@
+import { useEffect, useState } from "react";
 import { BsCart4 } from "react-icons/bs";
 import "./Landing.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import { useEffect, useState } from "react";
+
+import Slider from "@ant-design/react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Landing() {
   const [randomImage, setRandomImage] = useState("");
@@ -15,6 +19,16 @@ export default function Landing() {
     "/images/products/02.png",
     "/images/products/43.png",
   ];
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    arrows: false,
+  };
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * imgArr.length);
@@ -54,7 +68,7 @@ export default function Landing() {
                       و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
                       روزنامه و مجله در ستون و سطرآنچنان که لازم است
                     </p>
-                    <button className="bg-primary-blue text-white p-2 rounded-xl w-2/4 flex items-center justify-center gap-2">
+                    <button className="bg-primary-blue text-white p-2 rounded-xl w-2/4 flex items-center justify-center gap-2 hover:bg-sky-600 transition">
                       فروشگاه <BsCart4 className="text-2xl" />
                     </button>
                   </div>
@@ -94,68 +108,62 @@ export default function Landing() {
         </div>
         <div className="col-span-12">
           <div className="bg-primary-light shadow-sm p-4 rounded-lg h-full">
-            <Swiper
-              slidesPerView={3}
-              spaceBetween={0}
-              centeredSlides={true}
-              initialSlide={2}
-              className="mySwiper"
-            >
-              <SwiperSlide>
+            <Slider {...settings}>
+              <div>
                 <img
                   src="/images/products/27.png"
                   className="h-[150px] object-contain mx-auto drop-shadow-[10px_10px_5px_rgba(0,0,0,0.5)]"
                 />
-              </SwiperSlide>
-              <SwiperSlide>
+              </div>
+              <div>
                 <img
                   src="/images/products/30.png"
                   className="h-[150px] object-contain mx-auto drop-shadow-[10px_10px_5px_rgba(0,0,0,0.5)]"
                 />
-              </SwiperSlide>
-              <SwiperSlide>
+              </div>
+              <div>
                 <img
                   src="/images/products/29.png"
                   className="h-[150px] object-contain mx-auto drop-shadow-[10px_10px_5px_rgba(0,0,0,0.5)]"
                 />
-              </SwiperSlide>
-              <SwiperSlide>
+              </div>
+              <div>
                 <img
                   src="/images/products/33.png"
                   className="h-[150px] object-contain mx-auto drop-shadow-[10px_10px_5px_rgba(0,0,0,0.5)]"
                 />
-              </SwiperSlide>
-              <SwiperSlide>
+              </div>
+              <div>
                 <img
                   src="/images/products/34.png"
                   className="h-[150px] object-contain mx-auto drop-shadow-[10px_10px_5px_rgba(0,0,0,0.5)]"
                 />
-              </SwiperSlide>
-              <SwiperSlide>
+              </div>
+              <div>
                 <img
                   src="/images/products/26.png"
                   className="h-[150px] object-contain mx-auto drop-shadow-[10px_10px_5px_rgba(0,0,0,0.5)]"
                 />
-              </SwiperSlide>
-              <SwiperSlide>
+              </div>
+              <div>
                 <img
                   src="/images/products/36.png"
                   className="h-[150px] object-contain mx-auto drop-shadow-[10px_10px_5px_rgba(0,0,0,0.5)]"
                 />
-              </SwiperSlide>
-              <SwiperSlide>
+              </div>
+              <div>
                 <img
                   src="/images/products/37.png"
                   className="h-[150px] object-contain mx-auto drop-shadow-[10px_10px_5px_rgba(0,0,0,0.5)]"
                 />
-              </SwiperSlide>
-              <SwiperSlide>
+              </div>
+              <div>
                 <img
                   src="/images/products/38.png"
                   className="h-[150px] object-contain mx-auto drop-shadow-[10px_10px_5px_rgba(0,0,0,0.5)]"
                 />
-              </SwiperSlide>
-            </Swiper>
+              </div>
+            </Slider>
           </div>
         </div>
       </div>

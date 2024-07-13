@@ -7,6 +7,9 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 export default function Menu() {
   return (
     <div className="bg-white rounded-b-3xl p-4 shadow-lg flex justify-between lg:grid lg:grid-cols-12 items-center gap-4 lg:gap-8">
+      {/* Mobile Menu */}
+      <MobileMenu />
+      {/* Mobile Menu */}
       <div className="col-span-4 lg:col-span-1 flex items-center justify-center gap-4">
         <img
           src="/images/tcod-logo-white.jpg"
@@ -32,14 +35,10 @@ export default function Menu() {
             </Link>
           </li>
         </ul>
-
-        {/* Mobile Menu */}
-        <MobileMenu />
-        {/* Mobile Menu */}
       </div>
       <div className="col-span-8 flex lg:grid lg:grid-cols-12 items-center gap-8">
         <div className="flex items-center justify-center col-span-8 lg:col-span-6 w-full">
-          <button className="bg-primary-blue text-white p-2 rounded-s-xl h-[40px] ">
+          <button className="bg-primary-blue text-white p-2 rounded-s-xl h-[40px] hover:bg-sky-600 transition">
             <FiSearch className="text-xl" />
           </button>
           <input

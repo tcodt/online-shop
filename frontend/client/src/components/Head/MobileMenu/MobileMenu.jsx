@@ -3,6 +3,7 @@ import {
   PiPhoneCallDuotone,
   PiStorefrontDuotone,
   PiUserDuotone,
+  PiXBold,
 } from "react-icons/pi";
 import "./MobileMenu.css";
 import { useEffect, useRef, useState } from "react";
@@ -45,7 +46,7 @@ export default function MobileMenu() {
         ref={btnRef}
         className="flex items-center gap-1 text-2xl bg-primary-light p-2 rounded-full hover:shadow-md transition"
       >
-        <PiListBold />
+        {isMenuOpen ? <PiXBold /> : <PiListBold />}
       </button>
       {isMenuOpen && (
         <div
